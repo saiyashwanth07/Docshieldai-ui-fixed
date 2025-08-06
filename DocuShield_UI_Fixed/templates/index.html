@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DocuShield AI - Universal Document Malware Scanner</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>DocuShield AI</h1>
+    <p class="subtitle">Universal Document Malware Scanner</p>
+
+    <form action="/scan" method="post" enctype="multipart/form-data">
+      <input type="file" name="document" required>
+      <button type="submit">Scan Document</button>
+    </form>
+
+    {% if result %}
+    <div class="result-box">
+      <h2>Scan Result</h2>
+      <pre>{{ result|safe }}</pre>
+      <a href="/" class="rescan-btn">Scan Another Document</a>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
